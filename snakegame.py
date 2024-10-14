@@ -34,6 +34,50 @@ black =   pygame.Color(0,0,0)
 
 gameClock = pygame.time.Clock()
 
+def checkCollision(posA,As ,posB,Bs):
+    if(posA.x < posB.x+Bs and posA.x+As > posB.x and posA.y < posB.y+Bs and posA.y+As > posB.y):
+        return True
+    return False
+
+def checkLimits(snake):
+    if(snake.x > SCREEN_WIDTH):
+        snake.x = SNAKE_SIZE
+    if(snake.x <0):
+        snake.x = SCREEN_WIDTH - SNAKE_SIZE
+    if(snake.y > SCREEN_HEIGHT):
+        snake.y = SNAKE_SIZE
+    if(snake.y < 0):
+        snake.y - SCREEN_HEIGHT - SNAKE_SIZE
+
+class Apple:
+    def _init_(self,x,y,state):
+        self.x = x
+        self.y = y
+        self.state = state
+        self.color = pygame.color.Color("orange")
+
+    def draw(self,screen:
+             pygame.draw.rect(screen,self.color,(self.x,self.y,APPLE_SIZE,APPLE_SIZE),0))
+
+class segment:
+    self.x = x
+    self.y = y
+    self.direction = KEY["UP"]
+    self.color = "white"
+
+class snake:
+    def _inint_(self,x,y);
+        self.x = x
+        self.y = y
+        self.direction = key["UP"]
+        self.stack = []
+        self.stack.append(self)
+        blackBox =  segment(self.x , self.y + SEPARATION)
+        blackBox.direction   = KEY["UP"]
+        blackBox.color = "NULL"
+        self.stack.append(blackBox)  
+
+        
 def getKey():
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:    
@@ -92,4 +136,3 @@ def exitScreen():
 
 def main():
     score = 0
-    
